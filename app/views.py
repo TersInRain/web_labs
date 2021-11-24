@@ -206,7 +206,7 @@ def videopost(request):
         request,
         'app/videopost.html',
         {
-            'title':'Добавить видео',
+            'title':'видео',
             
             'year':datetime.now().year,
         }

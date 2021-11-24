@@ -1,14 +1,14 @@
-{% extends "app/layout.html" %}
+﻿{% extends "app/layout.html" %}
 
 {% block content %}
 
-<h2>{{ title }}</h2>
+<h2>Вход</h2>
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
             <form action="." method="post" class="form-horizontal">
                 {% csrf_token %}
-                <h4>Использовать локальный аккаунт для входа.</h4>
+                <h4>Используйте учетную запись данного сайта, чтобы войти.</h4>
                 <hr />
                 <div class="form-group">
                     <label for="id_username" class="col-md-2 control-label">Имя пользователя</label>
@@ -25,11 +25,11 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <input type="submit" value="Войти" class="btn btn-default" />
                     </div>
                 </div>
                 {% if form.errors %}
-                <p class="validation-summary-errors">Пожалуйста, введите корректные имя пользователя и пароль.</p>
+                <p class="validation-summary-errors">Пожалуйста, введите правильный пароль.</p>
                 {% endif %}
             </form>
         </section>
@@ -48,3 +48,16 @@
 <script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
 
 {% endblock %}
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
