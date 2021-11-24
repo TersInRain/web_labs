@@ -1,0 +1,53 @@
+﻿{% extends "app/layout.html" %} {% block content %} {% load staticfiles %} {% if form != None %}
+
+<h1>Заполните форму</h1>
+<div>
+  <form class="payment-form" method="post">
+    {% csrf_token %}
+    <label for="{{ form.name.id_for_label }}">{{form.name.label}}:</label> {{ form.name }}
+    <label for="{{ form.address.id_for_label }}">{{form.address.label}}:</label> {{ form.address }}
+    <label for="{{ form.phone.id_for_label }}">{{form.phone.label}}:</label> {{ form.phone }}
+    <label for="{{ form.email.id_for_label }}">{{form.email.label}}:</label> {{ form.email }}
+    <label for="{{ form.paymentMethod.id_for_label }}">{{form.paymentMethod.label}}:</label> {{ form.paymentMethod }}
+    <label for="{{ form.agreement.id_for_label }}">{{form.agreement.label}}:</label> {{ form.agreement }}
+    <input type="submit" value="Отправить" id="submit" />
+  </form>
+</div>
+
+<script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+<script>
+  let inputColor = $("#id_name").css("background-color");
+  
+  $("input").focus(function () {
+    $(this).css({ "background-color": "#0f0"});
+  });
+
+  $("input").blur(function() {
+    $(this).css({"background-color": inputColor});
+  });
+
+  let buttonColor = $("#submit").css("background-color")
+
+  $("#submit").mouseenter(function () {
+    $(this).css({ "background-color": "#f00", color: "#fff" });
+  });
+
+  $("#submit").mouseleave(function () {
+    $(this).css({ "background-color": buttonColor});
+  });
+
+</script>
+
+{% else %}
+
+<h1>Форма отправлена</h1>
+<ul>
+  <li><span>ФИО:</span> {{ data.name }}</li>
+  <li><span>Адрес:</span> {{ data.address }}</li>
+  <li><span>Телефон:</span> {{ data.phone }}</li>
+  <li><span>E-mail:</span> {{ data.email }}</li>
+  <li><span>paymentMethod</span> {{ data.paymentMethod }}</li>
+  <li><span>agreement</span> {{ data.agreement }}</li>
+</ul>
+
+{% endif %} {% endblock %}
